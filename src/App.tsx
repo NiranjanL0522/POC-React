@@ -24,6 +24,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={ctx.isloggedIn ? <Dashboard />: <Login />} />
               <Route path="/" element={ctx.isloggedIn ? <Dashboard />: <Login />} />
             </Routes>
           </BrowserRouter>

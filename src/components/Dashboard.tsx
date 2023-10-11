@@ -21,7 +21,7 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 
 export const Dashboard = () => {
   const [items, setItems] = useState([
-    { i: "a", x: 1, y: 0, w: 5, h: 2 },
+    { i: "a", x: 0, y: 0, w: 6, h: 2 },
     { i: "b", x: 6, y: 0, w: 6, h: 2 },
     { i: "c", x: 0, y: 2, w: 6, h: 2 },
     { i: "d", x: 6, y: 2, w: 6, h: 2 }
@@ -42,6 +42,7 @@ export const Dashboard = () => {
   return (
     <div>
       Dashboard <br />
+      <Button variant="contained" onClick={addNewLayout}>ADD</Button>
       <ResponsiveGridLayout
         className="layout"
         layouts={{ lg: items, md: items, sm: items }}
@@ -88,9 +89,7 @@ export const Dashboard = () => {
             </Card>
           );
         })}
-        <Card key="new" data-grid={{ i: "new", x: 0, y: 0, w: 1, h: 1 }}>
-          <Button onClick={addNewLayout}>ADD</Button>
-        </Card>
+        
       </ResponsiveGridLayout>
     </div>
   )

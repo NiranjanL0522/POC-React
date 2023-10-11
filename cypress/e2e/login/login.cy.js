@@ -16,7 +16,7 @@ describe('example login to app', () => {
     cy.get('.form-field div input').first().should('have.value', 'niranjan')
     cy.get('.form-field div input').last().should('have.value', 'niranjan')
     cy.get('.login-buttons').first().click()
-    cy.get('.react-grid-layout div[data-grid]').should('have.length', 3);
+    cy.get('.react-grid-layout div[data-grid]').should('have.length', 4);
   });
 
   it('login with wrong details', () => {

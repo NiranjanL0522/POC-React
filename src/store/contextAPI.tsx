@@ -25,7 +25,7 @@ export const ContextProvider = ({children}: props) => {
         if (username === 'niranjan' && password === 'niranjan') {
             setLoggedIn(true);
             localStorage.setItem('isLoggedIn', 'true');
-            window.location.href="/";
+            window.location.href="/dashboard";
         } else {
             alert("login failed!!");
         }
