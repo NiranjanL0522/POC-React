@@ -29,8 +29,8 @@ export const Login: React.FC = () => {
         <div className='login'>
             <h2>Login</h2>
             <Card className='login-card'>
-                <TextField id="username" data-testid='username' label="Username/Email" variant="outlined" className='form-field' value={username} onChange={(e) => setUsername(e.target.value)} /> <br />
-                <TextField id="password" data-testid='password' label="Password" variant="outlined" className='form-field' value={password} onChange={(e) => setPassword(e.target.value)} /> <br />
+                <TextField id="username" data-testid='username' label="Username/Email" variant="outlined" className='form-field' value={username} onChange={(e) => setUsername(e.target.value)} onBlur={(e) => setUsername(e.target.value)} /> <br />
+                <TextField id="password" data-testid='password' label="Password" variant="outlined" className='form-field' value={password} onChange={(e) => setPassword(e.target.value)} onBlur={(e) => setPassword(e.target.value)} /> <br />
                 <Button variant="contained" className='login-buttons' disabled={disabled} onClick={loginClicked}>Login</Button>
                 <Button variant="outlined" className='login-buttons' onClick={cancelClicked}>Cancel</Button>
             </Card>
