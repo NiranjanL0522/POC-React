@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Button, Card, TextField } from '@mui/material';
 import '../App.css';
+import { PocContext } from '../store/contextAPI';
 
 export const Login: React.FC = () => {
     const [disabled, setDisabled] = useState(true);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const ctx = useContext(PocContext);
 
     useEffect(() => {
         if(username.length > 0 && password.length > 0) {
@@ -20,11 +22,7 @@ export const Login: React.FC = () => {
     };
 
     const loginClicked = () => {
-        if (username === 'niranjan' && password === 'niranjan') {
-            console.log("login success")
-        } else {
-            alert("login failed!!");
-        }
+        ctx.loginClicked(username, password);
     }
 
     return (
