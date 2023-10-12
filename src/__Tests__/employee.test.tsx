@@ -1,8 +1,6 @@
 import { Employee } from "../components/Employee";
 import { fireEvent, render, screen } from '@testing-library/react';
 import { ContextProvider } from "../store/contextAPI";
-import React from 'react';
-import '@testing-library/jest-dom';
 
 test('Dashbaord component rendered with Employee Table', () => {
   render(<ContextProvider><Employee /></ContextProvider>);
