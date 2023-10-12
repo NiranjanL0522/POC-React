@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
-interface props {
+interface Props {
     children: JSX.Element;
 }
 export const PocContext = React.createContext({
@@ -10,7 +10,7 @@ export const PocContext = React.createContext({
 });
 
 
-export const ContextProvider = ({children}: props) => {
+export const ContextProvider = ({children}: Props) => {
     const [isLoggedIn, setLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -37,12 +37,14 @@ export const ContextProvider = ({children}: props) => {
         window.location.href="/login";
     }
 
+    const values = useMemo(() => ({
+        isloggedIn: isLoggedIn,
+        loginClicked: loginClicked,
+        logoutClicked
+    }), [isLoggedIn]);
+    
     return <PocContext.Provider 
-        value={{
-            isloggedIn: isLoggedIn,
-            loginClicked: loginClicked,
-            logoutClicked
-        }}>
+        value={values}>
         {children}
     </PocContext.Provider>
 }

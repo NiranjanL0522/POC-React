@@ -42,7 +42,7 @@ export const Dashboard = () => {
   return (
     <div>
       Dashboard <br />
-      <Button variant="contained" onClick={addNewLayout}>ADD</Button>
+      <Button variant="contained" onClick={addNewLayout} data-testid='add'>ADD</Button>
       <ResponsiveGridLayout
         className="layout"
         layouts={{ lg: items, md: items, sm: items }}
@@ -55,6 +55,7 @@ export const Dashboard = () => {
             <Card
               key={item.i}
               data-grid={{ x: item.x, y: item.y, w: item.w, h: item.h }}
+              data-testid='cards'
             >
               {index % 4 === 1 && (<BarChart width={500} height={300} data={Salaries}>
                 <XAxis dataKey="name" fontSize={10} />

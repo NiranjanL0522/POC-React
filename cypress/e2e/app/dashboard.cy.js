@@ -13,6 +13,5 @@ describe('example login to app', () => {
     cy.get('.react-grid-layout div[data-grid]').should('have.length', 4);
     cy.get('.react-grid-layout div[data-grid] button').should('have.length', 1);
     cy.get('.react-grid-layout div[data-grid] button').click()
-    // cy.get('.react-grid-layout div[data-grid]').should('have.length', 4);
   });
 });
