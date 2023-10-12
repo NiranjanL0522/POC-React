@@ -1,5 +1,5 @@
 import { Button, Card } from '@mui/material';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Responsive, WidthProvider } from "react-grid-layout";
 import {
   BarChart,
@@ -15,7 +15,8 @@ import {
   Scatter,
   ZAxis
 } from 'recharts';
-import { Salaries } from '../data';
+import { Employee } from './Employee';
+import { PocContext } from '../store/contextAPI';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -27,6 +28,7 @@ export const Dashboard = () => {
     { i: "d", x: 6, y: 2, w: 6, h: 2 }
   ]);
   const [count, setCount] = useState(0);
+  const { employeeDetails } = useContext(PocContext);
 
   const addNewLayout = (): void => {
     if (items.length % 2 === 0) {
@@ -38,11 +40,13 @@ export const Dashboard = () => {
       setCount(count + 1);
       setItems([...items, item])
     }
-  }
+  };
+
   return (
     <div>
       Dashboard <br />
-      <Button variant="contained" onClick={addNewLayout} data-testid='add'>ADD</Button>
+      <Employee />
+      <Button variant="contained" onClick={addNewLayout} data-testid='add'>ADD Graph</Button>
       <ResponsiveGridLayout
         className="layout"
         layouts={{ lg: items, md: items, sm: items }}
@@ -57,40 +61,54 @@ export const Dashboard = () => {
               data-grid={{ x: item.x, y: item.y, w: item.w, h: item.h }}
               data-testid='cards'
             >
-              {index % 4 === 1 && (<BarChart width={500} height={300} data={Salaries}>
-                <XAxis dataKey="name" fontSize={10} />
-                <YAxis fontSize={10} />
-                <Bar dataKey="ya" barSize={30} fill="#8884d8" />
-              </BarChart>)}
+              {index % 4 === 1 && (
+                <div>
+                  <div>Bar Chart</div>
+                  <BarChart width={500} height={280} data={employeeDetails}>
+                    <XAxis dataKey="name" fontSize={10} />
+                    <YAxis fontSize={10} />
+                    <Bar dataKey="shortSal" barSize={30} fill="#8884d8" />
+                  </BarChart>
+                </div>
+              )}
               {index % 4 === 2 && (
-                <LineChart width={500} height={300} data={Salaries}>
-                  <Line type="monotone" dataKey="ya" stroke="#8884d8" />
-                  <CartesianGrid stroke="#ccc" />
-                  <XAxis dataKey="name" fontSize={10} />
-                  <YAxis fontSize={10} />
-                </LineChart>
+                <div>
+                  <div>Line Chart</div>
+                  <LineChart width={500} height={280} data={employeeDetails}>
+                    <Line type="monotone" dataKey="shortSal" stroke="#8884d8" />
+                    <CartesianGrid stroke="#ccc" />
+                    <XAxis dataKey="name" fontSize={10} />
+                    <YAxis fontSize={10} />
+                  </LineChart>
+                </div>
               )}
               {index % 4 === 3 && (
-                <ScatterChart width={300} height={300} data={Salaries}>
-                  <Scatter dataKey={"name"} />
-                  <CartesianGrid stroke="#ccc" />
-                  <XAxis dataKey="name" fontSize={10} />
-                  <YAxis fontSize={10} dataKey={"ya"} />
-                  <ZAxis dataKey={"salary"} />
-                </ScatterChart>
+                <div>
+                  <div>Scatter Chart</div>
+                  <ScatterChart width={500} height={270} data={employeeDetails}>
+                    <Scatter dataKey={"name"} />
+                    <CartesianGrid stroke="#ccc" />
+                    <XAxis dataKey="name" fontSize={10} />
+                    <YAxis fontSize={10} dataKey={"shortSal"} />
+                    <ZAxis dataKey={"salary"} />
+                  </ScatterChart>
+                </div>
               )}
               {index % 4 === 0 && (
-                <AreaChart width={300} height={300} data={Salaries}>
-                  <Area type="monotone" dataKey="ya" stroke="#8884d8" />
-                  <CartesianGrid stroke="#ccc" />
-                  <XAxis dataKey="name" fontSize={10} />
-                  <YAxis fontSize={10} />
-                </AreaChart>
+                <div>
+                  <div>Area Chart</div>
+                  <AreaChart width={500} height={270} data={employeeDetails}>
+                    <Area type="monotone" dataKey="shortSal" stroke="#8884d8" />
+                    <CartesianGrid stroke="#ccc" />
+                    <XAxis dataKey="name" fontSize={10} />
+                    <YAxis fontSize={10} />
+                  </AreaChart>
+                </div>
               )}
             </Card>
           );
         })}
-        
+
       </ResponsiveGridLayout>
     </div>
   )
