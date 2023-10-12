@@ -3,7 +3,7 @@ import { Login } from './components/login';
 import './App.css';
 import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 import { PocContext } from "./store/contextAPI";
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { Dashboard } from "./components/Dashboard";
 import '../node_modules/react-grid-layout/css/styles.css';
 import '../node_modules/react-resizable/css/styles.css';

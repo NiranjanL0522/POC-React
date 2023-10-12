@@ -1,6 +1,8 @@
 import { Employee } from "../components/Employee";
 import { fireEvent, render, screen } from '@testing-library/react';
 import { ContextProvider } from "../store/contextAPI";
+import React from 'react';
+import '@testing-library/jest-dom';
 
 test('Dashbaord component rendered with Employee Table', () => {
   render(<ContextProvider><Employee /></ContextProvider>);
@@ -46,5 +48,5 @@ test('Adding new Employee with possible scenarios', () => {
   expect(nameElement.value).toBe('nir');
   fireEvent.click(createButton);
   expect(rowsCount).toHaveLength(8);
-  
+
 });

@@ -14,7 +14,7 @@ import {
   DialogContent
 } from '@mui/material';
 import { PocContext } from '../store/contextAPI';
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 interface Column {
   id: 'name' | 'id' | 'salary';

@@ -1,6 +1,8 @@
+import React from 'react';
 import { Dashboard } from "../components/Dashboard";
 import { fireEvent, render, screen } from '@testing-library/react';
 import { ContextProvider } from "../store/contextAPI";
+import '@testing-library/jest-dom';
 
 test('Dashbaord component rendered with Default Text', () => {
   render(<ContextProvider><Dashboard /></ContextProvider>);

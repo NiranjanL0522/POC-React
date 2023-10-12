@@ -1,5 +1,7 @@
 import { Login } from '../components/login';
 import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
+import '@testing-library/jest-dom';
 
 test('login componnet renders correctly', () => {
   render(<Login />);
