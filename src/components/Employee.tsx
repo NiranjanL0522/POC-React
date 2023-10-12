@@ -36,7 +36,7 @@ const columns: readonly Column[] = [
 
 export const Employee = () => {
   const [open, setOpen] = useState(false);
-  const [employeeName, setEmployeename] = useState('');
+  const [employeeName, setEmployeeName] = useState('');
   const [employeeSalary, setEmployeeSalary] = useState(0);
   const { employeeDetails, setEmployeeDetails } = useContext(PocContext);
 
@@ -45,15 +45,17 @@ export const Employee = () => {
   };
   const handleClose = () => {
     setOpen(false);
-    setEmployeename('');
+    setEmployeeName('');
     setEmployeeSalary(0);
   };
 
   const createEmployee = () => {
-    setEmployeeDetails([...employeeDetails, {name: employeeName, id: employeeDetails.length+1, salary: employeeSalary, shortSal: employeeSalary/1000}]);
-    setOpen(false);
-    setEmployeename('');
-    setEmployeeSalary(0);
+    if (employeeName.length > 3 && employeeSalary > 1000) {
+      setEmployeeDetails([...employeeDetails, { name: employeeName, id: employeeDetails.length + 1, salary: employeeSalary, shortSal: employeeSalary / 1000 }]);
+      setOpen(false);
+      setEmployeeName('');
+      setEmployeeSalary(0);
+    }
   }
 
   return (
@@ -91,34 +93,49 @@ export const Employee = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant="contained" onClick={addEmployee} data-testid='addEmployee'>ADD Employee</Button>
+      <Button variant="contained" onClick={addEmployee} data-testid='addEmployee' id="addEmployee">ADD Employee</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add Employee</DialogTitle>
         <DialogContent>
           <TextField
+            className='form-field'
             autoFocus
             id="name"
             label="Name"
             type="text"
-            fullWidth
-            variant="standard"
+            variant="outlined"
             value={employeeName}
-            onChange={(e) => setEmployeename(e.target.value)}
+            onChange={(e) => setEmployeeName(e.target.value)}
+            data-testid='employeeName'
           />
           <TextField
+            className='form-field'
             margin="dense"
             id="salary"
             label="Salary"
             type="number"
-            fullWidth
-            variant="standard"
+            variant="outlined"
             value={employeeSalary}
             onChange={(e) => setEmployeeSalary(parseInt(e.target.value))}
+            data-testid='employeeSalary'
           />
-          </DialogContent>
+        </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={createEmployee}>Create</Button>
+          <Button
+            data-testid='buttonCancelDialog'
+            id="cancelEmployee"
+            onClick={handleClose}
+          >
+            Cancel
+          </Button>
+          <Button
+            data-testid='buttonCreateDialog'
+            id="createEmployee"
+            onClick={createEmployee}
+            variant="contained"
+          >
+            Create
+          </Button>
         </DialogActions>
       </Dialog>
     </Paper>

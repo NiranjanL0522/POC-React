@@ -46,7 +46,7 @@ export const Dashboard = () => {
     <div>
       Dashboard <br />
       <Employee />
-      <Button variant="contained" onClick={addNewLayout} data-testid='add'>ADD Graph</Button>
+      <Button variant="contained" id="addGraph" onClick={addNewLayout} data-testid='add'>ADD Graph</Button>
       <ResponsiveGridLayout
         className="layout"
         layouts={{ lg: items, md: items, sm: items }}

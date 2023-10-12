@@ -17,6 +17,7 @@
   width: 60%;
   min-height: 100vh;
 }
+
 .login-card {
   padding: 20px;
   background-color: #FFF;
@@ -24,7 +25,7 @@
 
 .form-field {
   margin: 10px !important;
-  width: 80%;
+  width: 80% !important;
 }
 
 .login-buttons {
