@@ -18,8 +18,8 @@ function App() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Employee Records
             </Typography>
-            {!ctx.isloggedIn && <Button color="inherit" id="login" onClick={() => window.location.href = '/login'}>Login</Button>}
-            {ctx.isloggedIn && <Button color="inherit" id="logout" onClick={ctx.logoutClicked}>logout</Button>}
+            {!ctx.isloggedIn && <Button color="inherit" id="login" data-testid="login" onClick={() => window.location.href = '/login'}>Login</Button>}
+            {ctx.isloggedIn && <Button color="inherit" id="logout" data-testid="logout" onClick={ctx.logoutClicked}>logout</Button>}
           </Toolbar>
         </AppBar>
         <BrowserRouter>

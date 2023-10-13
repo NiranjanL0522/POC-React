@@ -26,4 +26,7 @@ test('Dashbaord component with Add button action', () => {
   fireEvent.click(addButton);
   const cards = screen.getAllByTestId("cards");
   expect(cards).toHaveLength(5);
+  fireEvent.click(addButton);
+  const updatedCards = screen.getAllByTestId("cards");
+  expect(updatedCards).toHaveLength(6);
 });

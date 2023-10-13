@@ -75,8 +75,7 @@ export const ContextProvider = ({ children }: Props) => {
     setEmployeeDetails
   }), [isLoggedIn, employeeDetails]);
 
-  return <PocContext.Provider
-    value={values}>
+  return <PocContext.Provider value={values}>
     {children}
   </PocContext.Provider>
 }
